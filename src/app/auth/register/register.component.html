@@ -1,0 +1,85 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+
+
+<div class="container">
+	<br><a class ="text-dark" href="/home"><img src="\assets\img\logo-herbt.png" height="50" width="50"> H E R B T</a>
+	<hr>
+
+<div class="card bg-light">
+<article class="card-body mx-auto" style="max-width: 400px;">
+	<h4 class="card-title mt-3 text-center">Get Started</h4>
+	<p>
+		<button type="button" (click)="loginviaGoogle()" class="btn btn-block btn-google"> <i class="fab fa-google"></i>   Create Account via Google</button>
+		<!-- <a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   Login via facebook</a> -->
+	</p>
+	<p class="divider-text">
+        <span class="bg-light">OR</span>
+	</p>
+	<p class="text-center">Create Account Here! </p>
+
+	<form #userRegForm="ngForm" (ngSubmit)="createUser(userRegForm)">
+		<div class="form-group input-group">
+			<div class="input-group-prepend">
+				<span class="input-group-text"> <i class="fa fa-user"></i> </span>
+			 </div>
+			 <input ngModel #lastname="ngModel" name="firstName" type="text" class="form-control"  placeholder="Firstname">
+			 <input ngModel #lastname="ngModel" name="middleName" type="text" class="form-control"  placeholder="Middlename">	
+			<input ngModel #lastname="ngModel" name="lastName" type="text" class="form-control"  placeholder="Lastname">
+		</div> <!-- form-group// -->
+
+		<div class="form-group input-group">
+			<div class="input-group-prepend">
+				<span class="input-group-text"> <i class="fa fa-calendar"></i> </span>
+			 </div>
+			 <input ngModel #dateofbirth="ngModel" name="dateOfBirth" type="date" class="form-control" placeholder="Birthdate">
+		</div> <!-- form-group// -->
+
+		<div class="form-group input-group">
+			<div class="input-group-prepend">
+				<span class="input-group-text"> <i class="fa fa-address-card"></i> </span>
+			 </div>
+			 <input ngModel #address="ngModel" name="addRess" type="text" class="form-control"placeholder="Address">
+		</div> <!-- form-group// -->
+
+	<div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+		 </div>
+		 <input ngModel #email="ngModel" name="email" type="email" class="form-control" placeholder="Email">
+		</div> <!-- form-group// -->
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+		</div>
+		<input ngModel #password="ngModel" name="password" type="password" class="form-control" placeholder="Create Password">
+		<div class="text-danger" *ngIf="isSubmitted && formControls.password.errors?.required">This field is required.
+		</div>
+	</div> <!-- form-group// -->                                    
+<!-- 
+	<div class="form-group">
+		<label>Gender</label>
+	  <select name="Gender" class="form-control" required>
+		<option value="">-</option>
+		<option value="Male">Male</option>
+		<option value="Female">Female</option>
+	  </select>
+	  <div class="text-danger" *ngIf="isSubmitted && formControls.Gender.errors?.required">This field is required.
+	  </div>
+	</div> -->
+
+	<div class="form-group">
+        <button type="submit" class="btn btn-primary btn-block"> Create Account  </button>
+    </div> <!-- form-group// -->      
+    <p class="text-center">Have an account? <a href="/login">Log In</a> </p>                                                                 
+</form>
+</article>
+</div> <!-- card.// -->
+
+</div> 
+<!--container end.//-->
+<br>

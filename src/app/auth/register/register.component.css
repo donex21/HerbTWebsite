@@ -1,0 +1,66 @@
+.divider-text {
+  position: relative;
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.divider-text span {
+  padding: 7px;
+  font-size: 12px;
+  position: relative;   
+  z-index: 2;
+}
+.divider-text:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+  top: 55%;
+  left: 0;
+  z-index: 1;
+}
+
+.btn-facebook {
+  background-color: #4c699e;
+  border-color: #47618d;
+  color: #fff;
+}
+.btn-facebook:hover {
+  background-color: #47618d;
+  border-color: #3c5173;
+}
+
+.btn-google {
+  background-color: #da573b;
+  border-color: #be5238;
+  color: #fff;
+}
+.btn-google:hover{
+  background-color: #be5238;
+  border-color: #9b4631;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+     font-size: 15px;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+     font-size: 20px;
+}
+
+/* Overriding styles */
+
+::-webkit-input-placeholder {
+  font-size: 12px!important;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+     font-size: 12px!important;
+}
+::-moz-placeholder {  /* Firefox 19+ */
+     font-size: 12px!important;
+}
+
+input[type="radio"]{
+  margin: 0 10px 0 10px;
+}

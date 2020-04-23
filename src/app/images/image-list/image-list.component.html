@@ -1,0 +1,86 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+<div class="container">
+
+  <div class="row">
+    <h3 class="text-center">Herbal Gallery</h3>
+  </div>
+  <hr>
+  <div class="row">    
+    <div class="col-xs-8 col-xs-offset-2">
+    <input type="text" [(ngModel)] = "bisname" (input)= "Search()" placeholder="Search"> 
+  </div>
+</div>
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <!-- It won't show if there is no herbal data -->
+      <a routerLink="/herbal/upload" class="btn btn-success" *ngIf="hideWhenNoHerbal">
+        <i class="fas fa-plus custom-fa-plus"></i>
+        Add Herbal
+      </a>
+    </div>
+    
+    <div class="pricing-header mx-auto">
+    
+      <!-- Preloader shows before the data loads-->
+      <div class="no-data text-center" *ngIf="preLoader">
+        <img src="\assets\img\Ring-Preloader.gif" class="animated-gif"  alt="No Herbal">
+      </div>
+    
+      <!-- No data shows when their is no herbal data available -->
+      <div class="no-data text-center" *ngIf="noData">
+        <img src="\assets\img\Ring-Preloader.gif" class="animated-gif" alt="No Herbal">
+        <p class="nodata-msg">No herbal added yet!</p>
+        <a routerLink="/herbal/upload" class="btn btn-success">
+          <i class="fas fa-plus custom-fa-plus"></i>
+          Add Herbal
+        </a>
+      </div>
+    
+      <!-- Showing herbal data -->
+      <div class="table-responsive" *ngIf="hideWhenNoHerbal">
+        <table class="table table-bordered table-responsive-sm table-responsive-md table-responsive-lg">
+          <thead>
+            <tr> 
+              <th scope="col">Herbal ID</th>
+              <th scope="col">Images</th>
+              <th scope="col">Names</th>
+              <th scope="col">Scientific Name</th>
+              <th scope="col">English Name</th>
+              <th scope="col">Family</th>
+              <th scope="col">Location</th>
+              <th scope="col">Status</th>
+              <th scope="col">Type</th>
+              <th scope="col">Treatments</th>
+              <th scope="col">Procedure</th>
+              <th class="text-center" scope="col">Edit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- *ngFor loop iterates over Herbal array and fetch the herbal's data -->
+            <!-- paginate pipe will add pagination in herbal's list, it won't show if items are less than 7 -->
+              <tr *ngFor="let herbal of Herbal | paginate: { itemsPerPage: 7, currentPage: p }; let i = index;">
+              <th scope="row"><small>{{herbal.$key}}</small></th>
+              <td><img src="{{herbal.imageUrl}}" style="width: 125px; height: 125px;"></td>                
+            
+
+              <td><small>{{herbal.Bisname}}</small></td>
+              <td><small>{{herbal.Sciename}}</small></td>
+              <td><small>{{herbal.Engname}}</small></td>
+              <td><small>{{herbal.Family}}</small></td>
+              <td><small>{{herbal.Location}}</small></td>
+              <td><small>{{herbal.Status}}</small></td>
+              <td><small>{{herbal.Type}}</small></td>
+              <td class="angular-with-newlines"><small>{{herbal.Treatments}}</small></td>
+              <td  class="angular-with-newlines"><small>{{herbal.Procedure}}</small></td>
+              <td class="text-center action-block">
+                <!-- routerLink="/edit/{{herbal.$key}}" is refered to { path: 'edit/:id', component: ImageEditComponent } in app-routing.moudles.ts -->
+                <i class="far fa-edit" routerLink="/edit/{{herbal.$key}}"></i>
+              </td>
+              </tr>
+              </tbody>
+              </table>
+              </div>
+               <!-- Pagination -->
+  <pagination-controls (pageChange)="p = $event" autoHide="true" responsive="true"></pagination-controls>
+              </div>
+    
